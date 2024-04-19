@@ -1,0 +1,81 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Your API"
+  description: "Description of your API"
+basePath: "/"
+paths:
+  /api/users:
+    get:
+      summary: Get all users
+      tags: [Users]
+      responses:
+        200:
+          description: Returns all users
+
+  /api/login:
+    post:
+      summary: Login user
+      tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Username for login
+                password:
+                  type: string
+                  description: Password for login
+                  format: password
+      responses:
+        200:
+          description: Login successful. Returns access and refresh tokens.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: Access token for protected routes
+                  refreshToken:
+                    type: string
+                    description: Refresh token for obtaining new access tokens
+        401:
+          description: Invalid username or password
+
+  /api/userExists:
+    post:
+      summary: User existence
+      tags: [User]
+      parameters:
+      - in: body
+        name: username
+        description: User data
+        required: true
+        schema:
+          type: object
+          properties:
+            username:
+              type: string
+              description: Username for login
+      responses:
+        200:
+          description: Login successful. Returns access and refresh tokens.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isUser:
+                    type: boolean
+                    description: Specifies user existense
+                  message:
+                    type: string
+                    description: Api response message
+        401:
+          description: Invalid username
