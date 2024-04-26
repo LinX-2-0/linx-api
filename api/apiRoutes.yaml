@@ -15,22 +15,22 @@ paths:
 
   /api/login:
     post:
-      summary: Login user
-      tags: [Users]
-      requestBody:
+      summary: Login
+      tags: [User]
+      parameters:
+      - in: body
+        name: data
+        description: User data
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                  description: Username for login
-                password:
-                  type: string
-                  description: Password for login
-                  format: password
+        schema:
+          type: object
+          properties:
+            username:
+              type: string
+              description: Username for login
+            password:
+              type: string
+              description: password for login
       responses:
         200:
           description: Login successful. Returns access and refresh tokens.
@@ -39,6 +39,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  userData:
+                    type: object
+                    description: On succesfull the loggedin userdata
                   accessToken:
                     type: string
                     description: Access token for protected routes
@@ -79,3 +82,40 @@ paths:
                     description: Api response message
         401:
           description: Invalid username
+  /api/registerUser:
+    post:
+      summary: User Registration
+      tags: [User]
+      parameters:
+      - in: body
+        name: data
+        description: User data
+        required: true
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: name for login
+            email:
+              type: string
+              description: email for login
+            phone:
+              type: string
+              description: email for login
+            don:
+              type: string
+              description: email for login
+      responses:
+        200:
+          description: Registration successful. Returns user id.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                    description: Registered userId
+        401:
+          description: Invalid Request
