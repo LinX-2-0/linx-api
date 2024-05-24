@@ -10,7 +10,7 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./api/apiRoutes.yaml');
 const PORT = 5000;
 
-app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors({origin: 'http://65.1.86.38:3000'}));
 
 
 db.connect((err) => {
