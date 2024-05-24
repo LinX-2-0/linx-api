@@ -9,7 +9,7 @@ const User = require('../models/User');
 
 
 const db = mysql.createConnection({
-    host: '65.1.86.38',
+    host: '172.31.33.19',
     user: 'root',
     password: 'new_password',
     database: 'linx'
