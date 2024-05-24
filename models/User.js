@@ -1,6 +1,6 @@
 // models/User.js
 const { DataTypes, Sequelize } = require('sequelize');
-const sequelize = new Sequelize('mysql://root:new_password@13.201.36.2:3306/linx');
+const sequelize = new Sequelize('mysql://root:new_password@65.1.86.38:3306/linx');
 
 const User = sequelize.define('User', {
   // Define model attributes
